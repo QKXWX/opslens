@@ -158,6 +158,18 @@ def test_disk_skip_when_no_disk():
     assert sum(i.deduction for i in items) == 0
 
 
+def test_disk_root_uncovered_is_not_full_score():
+    ctx = {"disks": [
+        {"mountpoint": "/boot", "device": "/dev/sda1", "fstype": "ext4",
+         "total": 10**9, "used": 10**8, "free": 9 * 10**8, "percent": 10.0,
+         "inode_total": 100, "inode_free": 90, "inode_percent": 10.0},
+    ]}
+    space = [i for i in o.check_disk(ctx, TH) if i.key == "disk_space"][0]
+    assert space.status == "warn"
+    assert "根分区" in space.detail
+    assert space.deduction > 0
+
+
 def test_security_root_login_crit():
     ctx = o.demo_context()
     items = o.check_security(ctx, TH)

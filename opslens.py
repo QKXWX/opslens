@@ -827,6 +827,14 @@ def check_disk(ctx, th):
     others = [d for d in disks[1:] if (d["percent"] or 0) >= th["disk_warn"]]
     if others:
         detail += "；另有 %d 个挂载点超过 %d%%" % (len(others), th["disk_warn"])
+    if not any(d["mountpoint"] == "/" for d in disks):
+        # 根分区被过滤掉（overlay 之外的未知类型、或 / 本身就是内存盘）
+        # 此时磁盘评分只覆盖子挂载点，不能装作满分
+        detail += "；根分区 / 未纳入统计"
+        if status == "ok":
+            status = "warn"
+            advice = ("根分区 / 的文件系统不在采集范围（或 / 是内存盘），磁盘评分只覆盖 %s 等挂载点，"
+                      "请人工确认根盘容量" % worst["mountpoint"])
     items.append(fnd("disk_space", "disk", "磁盘空间", status, detail, advice, 14))
 
     inode_worst = None
