@@ -1,0 +1,18 @@
+{
+  "disk_warn": 75,
+  "disk_crit": 85,
+  "inode_warn": 80,
+  "inode_crit": 90,
+  "cpu_load_warn": 0.5,
+  "cpu_load_crit": 1.2,
+  "cpu_usage_warn": 60,
+  "cpu_usage_crit": 85,
+  "mem_warn": 60,
+  "mem_crit": 80,
+  "swap_warn": 30,
+  "swap_crit": 70,
+  "zombie_warn": 3,
+  "zombie_crit": 10,
+  "dns_warn_ms": 150,
+  "dns_crit_ms": 1000
+}

@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opslens"
+version = "0.1.0"
+description = "服务器体检镜：一条命令给服务器做全身 CT，输出 0-100 健康评分与可分享的 HTML 报告"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "QKXWX" }]
+keywords = ["ops", "devops", "monitoring", "health-check", "linux", "cli", "diagnostics"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Systems Administration",
+    "Topic :: System :: Monitoring",
+]
+dependencies = []
+
+[project.scripts]
+opslens = "opslens:main"
+
+[project.urls]
+Homepage = "https://github.com/QKXWX/opslens"
+Issues = "https://github.com/QKXWX/opslens/issues"
+Changelog = "https://github.com/QKXWX/opslens/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+py-modules = ["opslens"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py"]
