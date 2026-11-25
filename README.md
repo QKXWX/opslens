@@ -8,7 +8,7 @@
 分级问题清单，以及一份可以直接发群里、发邮件的 HTML 报告。
 
 ![CI](https://github.com/QKXWX/opslens/actions/workflows/ci.yml/badge.svg)
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -39,7 +39,7 @@
 ## 快速开始
 
 ```bash
-# 一行跑，不安装（需要 Python 3.8+）
+# 一行跑，不安装（需要 Python 3.9+）
 curl -fsSL https://raw.githubusercontent.com/QKXWX/opslens/main/opslens.py -o opslens.py
 python3 opslens.py
 
